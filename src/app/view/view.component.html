@@ -1,0 +1,36 @@
+<div class="w3-container">  
+    <table class="w3-table-all style" style="width:800px; margin-left: auto; margin-right: auto">
+      <thead>
+        <tr class="w3-red">
+          <th class="center">Pending</th>
+          <th class="center">Completed</th>
+        </tr>
+      </thead>
+        <tr *ngFor="let task of tasks">
+          <td>
+              <div *ngIf="task.Status == 'pending'" class="card center">
+                  <div class="container">
+                    <h4><b>{{task.Name}}</b></h4>
+                    <p *ngIf="task.Priority == 1" class="blue">Low</p>
+                    <p *ngIf="task.Priority == 2" class="green">Medium</p>
+                    <p *ngIf="task.Priority == 3" class="orange">Medium-High</p>
+                    <p *ngIf="task.Priority == 4" class="red">High</p>                     
+                    <p>{{task.Assign_Date}}</p>
+                  </div>
+                </div> 
+          </td> 
+          <td>
+              <div *ngIf="task.Status == 'complete'" class="card center">
+                  <div class="container">
+                    <h4><b>{{task.Name}}</b></h4>
+                    <p *ngIf="task.Priority == 1" class="blue">Low</p>
+                    <p *ngIf="task.Priority == 2" class="green">Medium</p>
+                    <p *ngIf="task.Priority == 3" class="orange">Medium-High</p>
+                    <p *ngIf="task.Priority == 4" class="red">High</p>   
+                    <p>{{task.Assign_Date}}</p>
+                  </div>
+                </div> 
+          </td>
+        </tr> 
+    </table>
+    </div>

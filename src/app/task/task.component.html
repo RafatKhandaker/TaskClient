@@ -1,0 +1,26 @@
+<div class="search-container left">
+  <input [(ngModel)]="searchText" type="text" placeholder="Search.." name="search">
+</div>
+<div class="w3-container">  
+<table class="w3-table-all style" style="width:800px; margin-left: auto; margin-right: auto">
+  <thead>
+    <tr class="w3-red">
+      <th>Id</th>
+      <th>Name</th>
+      <th>Assign Date</th>
+      <th>Priority</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+    <tr *ngFor="let task of tasks | filter : searchText">
+      <td>{{task.Id}}</td>
+      <td>{{task.Name}}</td>
+      <td>{{task.Assign_Date}}</td>
+        <td *ngIf="task.Priority == 1" class="blue">Low</td>
+        <td *ngIf="task.Priority == 2" class="green">Medium</td>
+        <td *ngIf="task.Priority == 3" class="orange">Medium-High</td>
+        <td *ngIf="task.Priority == 4" class="red">High</td> 
+      <td>{{task.Status}}</td>
+    </tr> 
+</table>
+</div>
