@@ -15,10 +15,11 @@ import {
 export class TaskComponent implements OnInit, OnChanges {
 
   tasks: Tasks[];
+
   constructor( private taskService: TaskService ) { 
     this.tasks = [];
   }
-
+  
   ngOnInit() {
     this.getTasks();
   }
@@ -32,5 +33,24 @@ export class TaskComponent implements OnInit, OnChanges {
         .subscribe(response => this.tasks = response, error => console.log(error));
   }
 
+  getCountAll(): number{
+    return this.tasks.length;
+  }
 
+  getCountBy(selected: number): number{
+    let res: number = 0;
+
+    for(let task of this.tasks){
+      if(task.Priority == selected){ res++; }
+    }
+    return res;
+  }
+
+  filterByCheck(selected: string): void{
+    this.tasks.filter( it => {
+      return (
+        it.Priority.toString().toLowerCase().includes(selected)    
+    ); 
+    });
+  }
 }

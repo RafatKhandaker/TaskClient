@@ -1,6 +1,15 @@
 <div class="search-container left">
   <input [(ngModel)]="searchText" type="text" placeholder="Search.." name="search">
 </div>
+
+<div>
+  <p>Filter Priority:</p>
+  <p><input type="radio" [(ngModel)]="radVal">All({{getCountAll()}})</p>
+  <p><input type="radio" [(ngModel)]="radVal" value="4">High({{getCountBy(4)}})</p>
+  <p><input type="radio" [(ngModel)]="radVal" value="3">Mild({{getCountBy(3)}})</p>
+  <p><input type="radio" [(ngModel)]="radVal" value="2">Medium({{getCountBy(2)}})</p>
+  <p><input type="radio" [(ngModel)]="radVal" value="1">Low({{getCountBy(1)}})</p>
+</div>
 <div class="w3-container">  
 <table class="w3-table-all style" style="width:800px; margin-left: auto; margin-right: auto">
   <thead>
@@ -12,7 +21,7 @@
       <th>Status</th>
     </tr>
   </thead>
-    <tr *ngFor="let task of tasks | filter : searchText">
+    <tr *ngFor="let task of tasks | filter : searchText:radVal">
       <td>{{task.Id}}</td>
       <td>{{task.Name}}</td>
       <td>{{task.Assign_Date}}</td>
